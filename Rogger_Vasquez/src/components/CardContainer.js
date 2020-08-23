@@ -22,16 +22,17 @@ class CardContainer extends React.Component {
         // map content to Card elements
         return <Card {...hotel} />;
       })
-      .reduce((r, element, index) => {
+      .reduce((acc, element, index) => {
         // create element groups with size 3, result looks like:
         // [[elem1, elem2, elem3], [elem4, elem5, elem6], ...]
         if (index % 3 === 0) {
-          r.push([]);
+          acc.push([]);
         }
-        r[r.length - 1].push(element);
-        return r;
+        acc[acc.length - 1].push(element);
+        return acc;
       }, [])
       .map(rowContent => {
+        console.log('TCL: rowContent', rowContent);
         // surround every group with 'row'
         return <div className='row'>{rowContent}</div>;
       });
