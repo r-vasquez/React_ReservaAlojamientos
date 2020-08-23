@@ -32,7 +32,6 @@ class CardContainer extends React.Component {
         return acc;
       }, [])
       .map(rowContent => {
-        console.log('TCL: rowContent', rowContent);
         // surround every group with 'row'
         return <div className='row'>{rowContent}</div>;
       });
