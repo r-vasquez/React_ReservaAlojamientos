@@ -1,10 +1,13 @@
-import Prueba from './components/Prueba';
+import Filters from './components/Filters';
+import TopBar from './components/TopBar';
+import CardContainer from './components/CardContainer';
 
 function App() {
   return (
     <div>
-      <h1>App Works HOLAA</h1>
-      <Prueba />
+      <TopBar />
+      <Filters />
+      <CardContainer />
     </div>
   );
 }
