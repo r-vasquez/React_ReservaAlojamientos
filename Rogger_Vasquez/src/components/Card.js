@@ -22,7 +22,12 @@ class Card extends React.Component {
           </div>
           <div className='card-content'>
             <span className='card-title'>{this.props.name}</span>
-            {this.props.description}
+            <p>{this.props.description}</p>
+            {/* TODO: Cambiar este tipo */}
+            <br></br>
+            <p>Pais : {this.props.country}</p>
+            <p>Precio : {this.props.price}</p>
+            <p>Tamano : {this.props.rooms}</p>
           </div>
         </div>
       </div>
