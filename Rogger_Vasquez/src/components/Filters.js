@@ -1,10 +1,51 @@
 class Filters extends React.Component {
-  componentDidMount() {
-    var selectElem = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(selectElem);
+  constructor() {
+    super();
+    this.state = {
+      iniDate: '',
+      finalDate: ''
+    };
 
-    var pickerElem = document.querySelectorAll('.datepicker');
-    var instances = M.Datepicker.init(pickerElem);
+    this.handleIniDate = this.handleIniDate.bind(this);
+    this.handleFinalDate = this.handleFinalDate.bind(this);
+  }
+
+  componentDidMount() {
+    // Initiating Materialize CSS components.
+    let selectElem = document.querySelectorAll('select');
+    let instances = M.FormSelect.init(selectElem);
+    let context = this;
+
+    let iniPickerElem = document.querySelectorAll('.datepickerIni');
+    M.Datepicker.init(iniPickerElem, {
+      defaultDate: new Date(),
+      onSelect: function (date) {
+        let dateObj = new Date(date);
+        let dateSec = dateObj.getTime();
+        context.handleIniDate(dateSec);
+      }
+    });
+
+    let finalPickerElem = document.querySelectorAll('.datepickerFinal');
+    M.Datepicker.init(finalPickerElem, {
+      onSelect: function (date) {
+        let dateObj = new Date(date);
+        let dateSec = dateObj.getTime();
+        context.handleFinalDate(dateSec);
+      }
+    });
+  }
+
+  handleIniDate(iniDate) {
+    this.props.handleIniDate(iniDate);
+    let fecha = new Date(iniDate);
+    console.log(fecha);
+  }
+
+  handleFinalDate(finalDate) {
+    this.props.handleFinalDate(finalDate);
+    let fecha = new Date(finalDate);
+    console.log(fecha);
   }
 
   render() {
@@ -13,12 +54,16 @@ class Filters extends React.Component {
         <div className='row'>
           <div className='input-field col l6'>
             <i className='material-icons prefix'>arrow_forward</i>
-
-            <input type='text' className='datepicker' name='Entrada' placeholder='Fecha Entrada' />
+            <input type='text' className='datepicker datepickerIni' placeholder='Fecha Entrada' />
           </div>
           <div className='input-field col l6'>
             <i className='material-icons prefix'>arrow_back</i>
-            <input type='text' className='datepicker' name='Salida' placeholder='Fecha Salida' />
+            <input
+              type='text'
+              className='datepicker datepickerFinal'
+              name='Salida'
+              placeholder='Fecha Salida'
+            />
           </div>
         </div>
 

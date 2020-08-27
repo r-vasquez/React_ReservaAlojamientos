@@ -1,18 +1,9 @@
-import Filters from './components/Filters';
-import TopBar from './components/TopBar';
-import CardContainer from './components/CardContainer';
 import 'App.css';
+import MainPage from './components/MainPage';
 
 function App() {
-  return (
-    <React.Fragment>
-      <TopBar />
-      <div className='container'>
-        <Filters />
-        <CardContainer />
-      </div>
-    </React.Fragment>
-  );
+  // Using a single MainPage component for further expansion of the App. (Routing)
+  return <MainPage />;
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
