@@ -11,7 +11,7 @@ class Filters extends React.Component {
   }
 
   componentDidMount() {
-    // Initiating Materialize CSS components.
+    // Materialize needed initializations
     let selectElem = document.querySelectorAll('select');
     let instances = M.FormSelect.init(selectElem);
     let context = this;
@@ -21,8 +21,7 @@ class Filters extends React.Component {
       defaultDate: new Date(),
       onSelect: function (date) {
         let dateObj = new Date(date);
-        let dateSec = dateObj.getTime();
-        context.handleIniDate(dateSec);
+        context.handleIniDate(dateObj);
       }
     });
 
@@ -30,22 +29,17 @@ class Filters extends React.Component {
     M.Datepicker.init(finalPickerElem, {
       onSelect: function (date) {
         let dateObj = new Date(date);
-        let dateSec = dateObj.getTime();
-        context.handleFinalDate(dateSec);
+        context.handleFinalDate(dateObj);
       }
     });
   }
 
   handleIniDate(iniDate) {
     this.props.handleIniDate(iniDate);
-    let fecha = new Date(iniDate);
-    console.log(fecha);
   }
 
   handleFinalDate(finalDate) {
     this.props.handleFinalDate(finalDate);
-    let fecha = new Date(finalDate);
-    console.log(fecha);
   }
 
   render() {
