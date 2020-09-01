@@ -1,5 +1,10 @@
 class TopBar extends React.Component {
   render() {
+    const isDateIn = this.props.iniDate && this.props.finalDate;
+
+    const subtitle = isDateIn
+      ? `Desde el ${this.props.iniDate} hasta el ${this.props.finalDate}`
+      : `Por favor seleccione fechas`;
     return (
       <React.Fragment>
         <nav>
@@ -21,9 +26,7 @@ class TopBar extends React.Component {
         </nav>
 
         <div className='container'>
-          <h5>
-            Desde el {this.props.iniDate} hasta el {this.props.finalDate}{' '}
-          </h5>
+          <h5>{subtitle}</h5>
           <div className='divider'></div>
         </div>
       </React.Fragment>
