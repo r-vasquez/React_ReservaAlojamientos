@@ -12,6 +12,16 @@ class CardContainer extends React.Component {
   render() {
     let hotelesCard = hotelsData
       .filter(hotel => {
+        if (this.props.iniDate && this.props.finalDate) {
+          return (
+            parseInt(this.props.iniDate) >= parseInt(hotel.availabilityFrom) &&
+            parseInt(this.props.finalDate) <= parseInt(hotel.availabilityTo)
+          );
+        } else {
+          return true;
+        }
+      })
+      .filter(hotel => {
         if (this.props.country) {
           return hotel.country === this.props.country;
         } else {

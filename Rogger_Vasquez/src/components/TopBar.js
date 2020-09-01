@@ -5,6 +5,7 @@ class TopBar extends React.Component {
     const subtitle = isDateIn
       ? `Desde el ${this.props.iniDate} hasta el ${this.props.finalDate}`
       : `Por favor seleccione fechas`;
+
     return (
       <React.Fragment>
         <nav>

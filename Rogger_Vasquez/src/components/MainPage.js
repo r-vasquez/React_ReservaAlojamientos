@@ -7,6 +7,8 @@ class MainPage extends React.Component {
   constructor() {
     super();
     this.state = {
+      parsedIniDate: '',
+      parsedFinalDate: '',
       iniDate: '',
       finalDate: '',
       country: '',
@@ -23,12 +25,14 @@ class MainPage extends React.Component {
 
   handleIniDate(inidate) {
     this.setState({
-      iniDate: parseDate(inidate)
+      parsedIniDate: parseDate(inidate),
+      iniDate: inidate.getTime()
     });
   }
   handleFinalDate(finaldate) {
     this.setState({
-      finalDate: parseDate(finaldate)
+      parsedFinalDate: parseDate(finaldate),
+      finalDate: finaldate.getTime()
     });
   }
 
@@ -53,7 +57,7 @@ class MainPage extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <TopBar iniDate={this.state.iniDate} finalDate={this.state.finalDate} />
+        <TopBar iniDate={this.state.parsedIniDate} finalDate={this.state.parsedFinalDate} />
         <div className='container'>
           <Filters
             handleIniDate={this.handleIniDate}
@@ -66,6 +70,8 @@ class MainPage extends React.Component {
             country={this.state.country}
             price={this.state.price}
             roomSize={this.state.size}
+            iniDate={this.state.iniDate}
+            finalDate={this.state.finalDate}
           />
         </div>
       </React.Fragment>
