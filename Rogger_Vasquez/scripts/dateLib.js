@@ -1,6 +1,6 @@
 /*
   r-vasquez:
-  Library of functions to parse date object into a pre-defined spanish function
+  Library of functions to parse date object into a pre-defined spanish text
   w/o using external libs.
 
   Excercise purpose only... should have used moment.js

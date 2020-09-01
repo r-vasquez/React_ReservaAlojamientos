@@ -1,23 +1,42 @@
 import { hotelsData } from '../../scripts/data.js';
 import Card from './Card.js';
 
-// {
-//   slug: 'la-bamba-de-areco',
-//   name: 'La Bamba de Areco',
-//   photo: './images/la-bamba-de-areco.jpg',
-//   description:
-//     'La Bamba de Areco está ubicada en San Antonio de Areco, en el corazón de la pampa. Es una de las estancias más antiguas de la Argentina, recientemente restaurada para ofrecer a sus huéspedes todo el confort y esplendor colonial.',
-//   availabilityFrom: today.valueOf(),
-//   availabilityTo: today.valueOf() + 864000000, // 10 days
-//   rooms: 11,
-//   city: 'Buenos Aires',
-//   country: 'Argentina',
-//   price: 4
-// }
+// pequeno: hasta 10
+// medio: hasta 20
 
 class CardContainer extends React.Component {
+  constructor() {
+    super();
+  }
+
   render() {
     let hotelesCard = hotelsData
+      .filter(hotel => {
+        if (this.props.country) {
+          return hotel.country === this.props.country;
+        } else {
+          return true;
+        }
+      })
+      .filter(hotel => {
+        if (this.props.price) {
+          return hotel.price === parseInt(this.props.price);
+        } else {
+          return true;
+        }
+      })
+      .filter(hotel => {
+        switch (parseInt(this.props.roomSize)) {
+          case 1:
+            return hotel.rooms <= 10;
+          case 2:
+            return hotel.rooms > 10 && hotel.rooms <= 20;
+          case 3:
+            return hotel.rooms > 20;
+          default:
+            return true;
+        }
+      })
       .map(hotel => {
         // map content to Card elements
         return <Card {...hotel} />;

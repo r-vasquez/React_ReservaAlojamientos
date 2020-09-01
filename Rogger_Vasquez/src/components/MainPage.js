@@ -8,11 +8,17 @@ class MainPage extends React.Component {
     super();
     this.state = {
       iniDate: '',
-      finalDate: ''
+      finalDate: '',
+      country: '',
+      price: '',
+      size: ''
     };
 
     this.handleIniDate = this.handleIniDate.bind(this);
     this.handleFinalDate = this.handleFinalDate.bind(this);
+    this.handleCountry = this.handleCountry.bind(this);
+    this.handlePrice = this.handlePrice.bind(this);
+    this.handleSize = this.handleSize.bind(this);
   }
 
   handleIniDate(inidate) {
@@ -26,13 +32,41 @@ class MainPage extends React.Component {
     });
   }
 
+  handleCountry(countryIn) {
+    this.setState({
+      country: countryIn
+    });
+  }
+
+  handlePrice(priceIn) {
+    this.setState({
+      price: priceIn
+    });
+  }
+
+  handleSize(sizeIn) {
+    this.setState({
+      size: sizeIn
+    });
+  }
+
   render() {
     return (
       <React.Fragment>
         <TopBar iniDate={this.state.iniDate} finalDate={this.state.finalDate} />
         <div className='container'>
-          <Filters handleIniDate={this.handleIniDate} handleFinalDate={this.handleFinalDate} />
-          <CardContainer />
+          <Filters
+            handleIniDate={this.handleIniDate}
+            handleFinalDate={this.handleFinalDate}
+            handleCountry={this.handleCountry}
+            handlePrice={this.handlePrice}
+            handleSize={this.handleSize}
+          />
+          <CardContainer
+            country={this.state.country}
+            price={this.state.price}
+            roomSize={this.state.size}
+          />
         </div>
       </React.Fragment>
     );

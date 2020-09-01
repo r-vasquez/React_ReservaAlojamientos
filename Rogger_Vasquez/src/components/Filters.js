@@ -2,12 +2,16 @@ class Filters extends React.Component {
   constructor() {
     super();
     this.state = {
-      iniDate: '',
-      finalDate: ''
+      country: '',
+      price: '',
+      size: ''
     };
 
     this.handleIniDate = this.handleIniDate.bind(this);
     this.handleFinalDate = this.handleFinalDate.bind(this);
+    this.handleCountry = this.handleCountry.bind(this);
+    this.handlePrice = this.handlePrice.bind(this);
+    this.handleSize = this.handleSize.bind(this);
   }
 
   componentDidMount() {
@@ -42,14 +46,49 @@ class Filters extends React.Component {
     this.props.handleFinalDate(finalDate);
   }
 
+  handleCountry(event) {
+    this.setState(
+      {
+        country: event.target.value
+      },
+      () => {
+        this.props.handleCountry(this.state.country);
+      }
+    );
+  }
+
+  handlePrice(event) {
+    this.setState(
+      {
+        price: event.target.value
+      },
+      () => {
+        this.props.handlePrice(this.state.price);
+      }
+    );
+  }
+
+  handleSize(event) {
+    this.setState(
+      {
+        size: event.target.value
+      },
+      () => {
+        this.props.handleSize(this.state.size);
+      }
+    );
+  }
+
   render() {
     return (
       <React.Fragment>
         <div className='row'>
+          {/* Initial Date Picker */}
           <div className='input-field col l6'>
             <i className='material-icons prefix'>arrow_forward</i>
             <input type='text' className='datepicker datepickerIni' placeholder='Fecha Entrada' />
           </div>
+          {/* Final Date Picker */}
           <div className='input-field col l6'>
             <i className='material-icons prefix'>arrow_back</i>
             <input
@@ -61,11 +100,12 @@ class Filters extends React.Component {
           </div>
         </div>
 
+        {/* Country Selection */}
         <div className='row'>
           <div className='input-field col l4 offset-s1'>
             <i className='material-icons prefix'>public</i>
-            <select name='country'>
-              <option value='' disabled selected>
+            <select name='country' value={this.state.country} onChange={this.handleCountry}>
+              <option value='' selected>
                 Todos los países
               </option>
               <option value='Argentina'>Argentina</option>
@@ -75,10 +115,11 @@ class Filters extends React.Component {
             </select>
           </div>
 
+          {/* Price Selection */}
           <div className='input-field col l4'>
             <i className='material-icons prefix'>attach_money</i>
-            <select name='price'>
-              <option value='' disabled selected>
+            <select name='price' value={this.state.price} onChange={this.handlePrice}>
+              <option value='' selected>
                 Cualquier precio
               </option>
               <option value='1'>$</option>
@@ -88,15 +129,16 @@ class Filters extends React.Component {
             </select>
           </div>
 
+          {/* Size Selection */}
           <div className='input-field col l4'>
             <i className='material-icons prefix'>local_hotel</i>
-            <select name='roomSize'>
-              <option value='' disabled selected>
+            <select name='roomSize' value={this.state.size} onChange={this.handleSize}>
+              <option value='' selected>
                 Cualquier tamaño
               </option>
-              <option value='s'>Hotel pequeño</option>
-              <option value='m'>Hotel mediano</option>
-              <option value='l'>Hotel grande</option>
+              <option value='1'>Hotel pequeño</option>
+              <option value='2'>Hotel mediano</option>
+              <option value='3'>Hotel grande</option>
             </select>
           </div>
         </div>
