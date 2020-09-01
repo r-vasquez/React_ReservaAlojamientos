@@ -22,7 +22,7 @@ class Filters extends React.Component {
     let context = this;
 
     let iniPickerElem = document.querySelectorAll('.datepickerIni');
-    const initiatedPicker1 = M.Datepicker.init(iniPickerElem, {
+    M.Datepicker.init(iniPickerElem, {
       defaultDate: new Date(),
       minDate: this.state.minDate,
       autoClose: true,
@@ -34,7 +34,7 @@ class Filters extends React.Component {
     });
 
     let finalPickerElem = document.querySelectorAll('.datepickerFinal');
-    const initiatedPicker2 = M.Datepicker.init(finalPickerElem, {
+    M.Datepicker.init(finalPickerElem, {
       defaultDate: new Date(),
       autoClose: true,
       minDate: this.state.minDate,
@@ -46,6 +46,7 @@ class Filters extends React.Component {
   }
 
   componentDidUpdate() {
+    // working date pickers co-dependently
     let context = this;
     M.Datepicker.init(document.querySelectorAll('.datepickerFinal'), {
       defaultDate: this.state.minDate,
