@@ -35,6 +35,9 @@ class Card extends React.Component {
               <strong>Tamaño :</strong> {this.props.rooms} cuartos
             </p>
           </div>
+          <div className='card-action'>
+            <a href='#'>Reservar</a>
+          </div>
         </div>
       </div>
     );
