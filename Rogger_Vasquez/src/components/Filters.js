@@ -4,7 +4,8 @@ class Filters extends React.Component {
     this.state = {
       country: '',
       price: '',
-      size: ''
+      size: '',
+      minDate: new Date()
     };
 
     this.handleIniDate = this.handleIniDate.bind(this);
@@ -21,16 +22,35 @@ class Filters extends React.Component {
     let context = this;
 
     let iniPickerElem = document.querySelectorAll('.datepickerIni');
-    M.Datepicker.init(iniPickerElem, {
+    const initiatedPicker1 = M.Datepicker.init(iniPickerElem, {
       defaultDate: new Date(),
+      minDate: this.state.minDate,
+      autoClose: true,
       onSelect: function (date) {
         let dateObj = new Date(date);
         context.handleIniDate(dateObj);
+        context.setState({ minDate: dateObj });
       }
     });
 
     let finalPickerElem = document.querySelectorAll('.datepickerFinal');
-    M.Datepicker.init(finalPickerElem, {
+    const initiatedPicker2 = M.Datepicker.init(finalPickerElem, {
+      defaultDate: new Date(),
+      autoClose: true,
+      minDate: this.state.minDate,
+      onSelect: function (date) {
+        let dateObj = new Date(date);
+        context.handleFinalDate(dateObj);
+      }
+    });
+  }
+
+  componentDidUpdate() {
+    let context = this;
+    M.Datepicker.init(document.querySelectorAll('.datepickerFinal'), {
+      defaultDate: this.state.minDate,
+      autoClose: true,
+      minDate: this.state.minDate,
       onSelect: function (date) {
         let dateObj = new Date(date);
         context.handleFinalDate(dateObj);
