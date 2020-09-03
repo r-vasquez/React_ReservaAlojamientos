@@ -14,7 +14,7 @@ This app is created using:
 
 ### Preview:
 
-![preview](https://media.giphy.com/media/cjoCug3iFwnpo4nRJw/giphy.gif)
+![preview](preview.gif)
 
 ## How to launch the application
 
