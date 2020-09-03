@@ -14,7 +14,7 @@ This app is created using:
 
 ### Preview:
 
-![preview](preview.png)
+![preview](preview640.gif)
 
 ## How to launch the application
 
