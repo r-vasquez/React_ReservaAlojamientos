@@ -18,4 +18,4 @@ This app is created using:
 
 ## How to launch the application
 
-Launch a development local server with live reload, for VS Code I used the Extension " Live Server by Ritwick Dey " ]]
+Launch a development local server with live reload, for VS Code I used the Extension " Live Server by Ritwick Dey "
