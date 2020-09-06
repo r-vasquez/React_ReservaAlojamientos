@@ -1,9 +1,6 @@
 import { hotelsData } from '../../scripts/data.js';
 import Card from './Card.js';
 
-// pequeno: hasta 10
-// medio: hasta 20
-
 class CardContainer extends React.Component {
   constructor() {
     super();
@@ -49,7 +46,7 @@ class CardContainer extends React.Component {
       })
       .map(hotel => {
         // map content to Card elements
-        return <Card {...hotel} />;
+        return <Card {...hotel} key={hotel.slug} />;
       })
       .reduce((acc, element, index) => {
         // create element groups with size 3, result looks like:
@@ -60,9 +57,9 @@ class CardContainer extends React.Component {
         acc[acc.length - 1].push(element);
         return acc;
       }, [])
-      .map(rowContent => {
+      .map((rowContent, index) => {
         // surround every group with 'row'
-        return <div className='row'>{rowContent}</div>;
+        return <div className='row' key={index}>{rowContent}</div>;
       });
 
       let alertEmpty = 
