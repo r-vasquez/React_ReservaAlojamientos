@@ -125,8 +125,8 @@ class Filters extends React.Component {
         <div className='row'>
           <div className='input-field col l4 offset-s1'>
             <i className='material-icons prefix'>public</i>
-            <select name='country' value={this.state.country} onChange={this.handleCountry}>
-              <option value='' selected>
+            <select name='country' value={this.state.country} onChange={this.handleCountry} defaulvalue={''}>
+              <option value='' >
                 Todos los países
               </option>
               <option value='Argentina'>Argentina</option>
@@ -139,8 +139,8 @@ class Filters extends React.Component {
           {/* Price Selection */}
           <div className='input-field col l4'>
             <i className='material-icons prefix'>attach_money</i>
-            <select name='price' value={this.state.price} onChange={this.handlePrice}>
-              <option value='' selected>
+            <select name='price' value={this.state.price} onChange={this.handlePrice} defaulvalue={''}>
+              <option value='' >
                 Cualquier precio
               </option>
               <option value='1'>$</option>
@@ -153,8 +153,8 @@ class Filters extends React.Component {
           {/* Size Selection */}
           <div className='input-field col l4'>
             <i className='material-icons prefix'>local_hotel</i>
-            <select name='roomSize' value={this.state.size} onChange={this.handleSize}>
-              <option value='' selected>
+            <select name='roomSize' value={this.state.size} onChange={this.handleSize} defaulvalue={''}>
+              <option value='' >
                 Cualquier tamaño
               </option>
               <option value='1'>Hotel pequeño</option>
