@@ -65,7 +65,14 @@ class CardContainer extends React.Component {
         return <div className='row'>{rowContent}</div>;
       });
 
-    return <div className='row'>{hotelesCard}</div>;
+      let alertEmpty = 
+      <div className="col s12 m5">
+        <div className="card-panel purple lighten-5">
+          <span>¡Lo Sentimos! No hay ningún hotel para la fecha que está buscando</span>
+        </div>
+      </div>
+
+    return <div className='row'>{hotelesCard.length === 0 ? alertEmpty : hotelesCard}</div>;
   }
 }
 export default CardContainer;
