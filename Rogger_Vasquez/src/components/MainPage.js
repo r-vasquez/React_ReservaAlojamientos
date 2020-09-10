@@ -55,6 +55,7 @@ class MainPage extends React.Component {
   }
 
   render() {
+    const { country, price, size, iniDate, finalDate } = this.state;
     return (
       <React.Fragment>
         <TopBar iniDate={this.state.parsedIniDate} finalDate={this.state.parsedFinalDate} />
@@ -67,11 +68,11 @@ class MainPage extends React.Component {
             handleSize={this.handleSize}
           />
           <CardContainer
-            country={this.state.country}
-            price={this.state.price}
-            roomSize={this.state.size}
-            iniDate={this.state.iniDate}
-            finalDate={this.state.finalDate}
+            country={country}
+            price={price}
+            roomSize={size}
+            iniDate={iniDate}
+            finalDate={finalDate}
           />
         </div>
       </React.Fragment>
